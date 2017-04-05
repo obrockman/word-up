@@ -115,7 +115,7 @@ function render() {
 
     // TODO 2
     // Update the curent time remaining on the scoreboard.
-
+    $("#time-remaining").text(model.secondsRemaining); 
 
     // if the game has not started yet, just hide the #game container and exit
     if (model.gameHasStarted == false) {
@@ -145,9 +145,10 @@ function render() {
 
     // Set the value of the textbox
     $("#textbox").val(model.currentAttempt);
-    // TODO 3
+    // TODO 3 DONE
     // Give focus to the textbox.
-
+    $("#textbox").focus();
+    
 
     // if the current word attempt contains disallowed letters,
     var disallowedLetters = disallowedLettersInWord(model.currentAttempt);
@@ -396,7 +397,7 @@ function add(a, b) {
 function startTimer() {
     function tick() {
         return setTimeout(function() {
-            model.secondsRemaining = Math.max(0, model.secondsRemaining - 1);
+            model.secondsRemaining = Math.max(0, model.secondsRemaining - 1) 
             render();
             var stillTimeLeft = model.gameHasStarted && model.secondsRemaining > 0
             if (stillTimeLeft) {
